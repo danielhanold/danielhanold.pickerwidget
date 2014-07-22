@@ -1,7 +1,7 @@
 {
 	"id": "danielhanold.pickerWidget",
 	"name": "Cross-Platform Picker Widget",
-	"description" : “Picker widget that attempts to normalize cross-platform differences and general idiosyncrasies with the Titanium SDK”,
+	"description" : "Picker widget that attempts to normalize cross-platform differences and general idiosyncrasies with the Titanium SDK",
 	"author": "Daniel Hanold",
 	"version": "0.1",
 	"copyright":"Copyright (c) 2014",
