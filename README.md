@@ -13,7 +13,8 @@ To open one of the pickers, specify the following variables:
 
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| id | `string` | Identifier for the widget |
+| type | `string` | Type of picker ('single-column', 'age-range', 'date-picker') |
+| id | `string` | Identifier for the picker |
 | outerView | `object` | View this widget should get attached to. Usually, a window. |
 | hideNavBar | `boolean` | Hides the navigation bar on iOS. |
 | onDone | `function` | Callback function. Gets executed when user clicks the "Done" button. |
@@ -23,15 +24,15 @@ One advantage of using this widget is a uniform data format when using the "onDo
 
 | Key | Type | Description |
 | --------- | ---- | ----------- |
-| type | `string` | Type of widget ('single-column', 'age-range', 'date-picker') |
+| type | `string` | Type of picker ('single-column', 'age-range', 'date-picker') |
 | id | `id` | Identifier for this widget (set when widget is created)
 | cancel | `boolean` | Indicates if user has cancelled the entry |
 | data | `object` | Hides the navigation bar on iOS. |
 
-Depending on the type, the data object is composed of different elements.
+Depending on the type, the `data` object is composed of different elements.
 
 ### Single Column
-Returns an array for compatibility with future implementation for multi-column pickers.
+Special case: `data` returns an array of objects for compatibility with future implementation 0f multi-column pickers.
 
 * `key`: Key of selected option
 * `value`: Value of selection option
