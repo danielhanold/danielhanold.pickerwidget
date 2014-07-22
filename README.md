@@ -146,7 +146,7 @@ var overlay = Alloy.createWidget('danielhanold.pickerWidget', {
 
 
 ## Screenshot iOS
-![Picker Widget Examples iOS](https://raw.githubusercontent.com/danielhanold/danielhanold.pickerwidget/pickerWidget/master/docs/screenshot_ios.jpg)
+![Picker Widget Examples iOS](https://raw.githubusercontent.com/danielhanold/danielhanold.pickerwidget/master/danielhanold.pickerwidget/docs/screenshot_ios.jpg)
 
 ## Screenshot Android
-![Picker Widget Examples iOS](https://raw.githubusercontent.com/danielhanold/danielhanold.pickerwidget/pickerWidget/master/docs/screenshot_android.jpg)
+![Picker Widget Examples iOS](https://raw.githubusercontent.com/danielhanold/danielhanold.pickerwidget/master/danielhanold.pickerwidget/docs/screenshot_android.jpg)
