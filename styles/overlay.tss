@@ -1,0 +1,13 @@
+"#overlay": {
+  width: Ti.UI.FILL,
+  height: Ti.UI.FILL,
+  backgroundColor: '#000'
+}
+
+"#overlay[platform=ios]": {
+  opacity: 0.25
+}
+
+"#overlay[platform=android]": {
+  opacity: 0.75
+}

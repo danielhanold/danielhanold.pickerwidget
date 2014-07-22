@@ -1,0 +1,50 @@
+"#pickerView": {
+  top: '10%',
+  width: '85%',
+  height: '80%',
+  backgroundColor: 'white',
+  borderColor: '#636363',
+  borderWidth: 1,
+  borderRadius: 1,
+  zIndex: 99,
+  layout: 'composite'
+}
+
+"#picker": {
+  top: 30,
+  selectionIndicator: true,
+  useSpinner: true,
+  visibleItems: 10,
+  type: Ti.UI.PICKER_TYPE_PLAIN
+}
+
+"#toolbar": {
+  bottom: '5%',
+  height: 50,
+  backgroundColor: 'transparent',
+  width: Ti.UI.FILL
+}
+
+"Button": {
+  backgroundGradient: {
+    type: 'linear',
+    colors: [{color: '#55acee', offset: 0.0}, {color: '#359ade', offset: 1.0}]
+  },
+  borderRadius: 2,
+  borderColor: '#3399dd',
+  color: 'white',
+  font: {
+    fontWeight: 'bold'
+  },
+  height: 40
+}
+
+"#buttonCancel": {
+  width: '42%',
+  left: '5%',
+}
+
+"#buttonDone": {
+  width: '42%',
+  right: '5%',
+}

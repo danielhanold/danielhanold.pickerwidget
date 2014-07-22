@@ -1,0 +1,19 @@
+<Alloy>
+  <View id="pickerView">
+
+    <Toolbar id="toolbar" platform="ios">
+      <Items>
+        <Button id="buttonCancel" title="Cancel" style="Ti.UI.iPhone.SystemButtonStyle.BORDERED" onClick="onCancel" />
+        <FlexSpace/>
+        <Button id="buttonDone" title="Done" style="Ti.UI.iPhone.SystemButtonStyle.DONE" onClick="onDone" />
+      </Items>
+    </Toolbar>
+
+    <View id="toolbar" platform="android">
+      <Button id="buttonCancel" onClick="onCancel">Cancel</Button>
+      <Button id="buttonDone" onClick="onDone">Done</Button>
+    </View>
+
+    <Picker id="picker" />
+  </View>
+</Alloy>
