@@ -121,9 +121,10 @@ This example creates a date picker, sets the minimum date to the first day of 19
 
 ```
 // Date Picker example.
-var today = new Date();
-var minDate = new Date(today.setYear(1900));
-var maxDate = new Date(today.setYear(today.getYear()-18));
+// Set minimum date to 1900.
+var minDate = new Date(new Date().setYear(1900));
+// Set minimum date to today - 18 years.
+var maxDate = new Date(new Date().setYear(new Date().getYear()-18));
 var defaultValue = maxDate;
 var maxSelectedDate = new Date(new Date().setYear(new Date().getYear()-18));
 var overlay = Alloy.createWidget('danielhanold.pickerWidget', {
