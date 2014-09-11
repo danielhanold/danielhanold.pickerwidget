@@ -284,7 +284,7 @@ function done(e) {
       }
       else {
         var data = [{
-          key: e.index,
+          key: getKeyFromPairs(pickerValueArray, e.source.options[e.index]),
           value: e.source.options[e.index]
         }];
       }
