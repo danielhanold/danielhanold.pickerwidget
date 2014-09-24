@@ -3,15 +3,15 @@
 
     <Toolbar id="toolbar" platform="ios">
       <Items>
-        <Button id="buttonCancel" title="Cancel" style="Ti.UI.iPhone.SystemButtonStyle.BORDERED" onClick="onCancel" />
+        <Button id="buttonCancel" title="L('cancelButton', 'Cancel')" style="Ti.UI.iPhone.SystemButtonStyle.BORDERED" onClick="onCancel" />
         <FlexSpace/>
-        <Button id="buttonDone" title="Done" style="Ti.UI.iPhone.SystemButtonStyle.DONE" onClick="onDone" />
+        <Button id="buttonDone" title="L('doneButton', 'Done')" style="Ti.UI.iPhone.SystemButtonStyle.DONE" onClick="onDone" />
       </Items>
     </Toolbar>
 
     <View id="toolbar" platform="android">
-      <Button id="buttonCancel" onClick="onCancel">Cancel</Button>
-      <Button id="buttonDone" onClick="onDone">Done</Button>
+      <Button id="buttonCancel" onClick="onCancel" title="L('cancelButton', 'Cancel')" />
+      <Button id="buttonDone" onClick="onDone" title="L('doneButton', 'Done')" />
     </View>
 
     <Picker id="picker" />
