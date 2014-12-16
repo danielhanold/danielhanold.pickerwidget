@@ -22,7 +22,8 @@
   bottom: '5%',
   height: 50,
   backgroundColor: 'transparent',
-  width: Ti.UI.FILL
+  width: Ti.UI.FILL,
+  layout: 'composite'
 }
 
 "Button": {
