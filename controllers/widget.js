@@ -170,27 +170,15 @@ function populatePicker() {
     break;
 
   case 'date-picker':
-    // The picker type can't bet set after the picker
-    // is created on Android. See pickerView.js
-    if (OS_IOS) {
-      // Set the picker type to a date picker.
-      picker.setType(Ti.UI.PICKER_TYPE_DATE);
-
-      args.pickerParams = args.pickerParams || {};
-
-      // Set the minimum and maximum date.
-      if (_.isDate(args.pickerParams.minDate)) {
-        picker.setMinDate(args.pickerParams.minDate);
-      }
-      if (_.isDate(args.pickerParams.maxDate)) {
-        picker.setMaxDate(args.pickerParams.maxDate);
-      }
-
-      // Set the default value.
-      if (_.isDate(args.pickerParams.value)) {
-        picker.setValue(args.pickerParams.value);
-      }
-    }
+    // On Android, the picker type can't bet set after
+    // the picker is created.
+    // On iOS, the picker type can be set after the picker
+    // is created. On iOS 8+, there are intermittent issues
+    // if the picker type is set after the picker is created.
+    // @see https://github.com/danielhanold/danielhanold.pickerwidget/issues/8
+    //
+    // To circumvent both issues, set values on creation.
+    // See pickerView.js
     break;
   }
 }
