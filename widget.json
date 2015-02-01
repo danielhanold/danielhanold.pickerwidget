@@ -3,7 +3,7 @@
 	"name": "Cross-Platform Picker Widget",
 	"description": "Picker widget that attempts to normalize cross-platform differences and general idiosyncrasies with the Titanium SDK.",
 	"author": "Daniel Hanold",
-	"version": "1.0",
+	"version": "1.1",
 	"copyright": "Copyright (c) 2014",
 	"license": "MIT",
 	"min-alloy-version": "1.0",
