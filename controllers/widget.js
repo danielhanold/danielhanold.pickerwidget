@@ -91,8 +91,10 @@ function populateOptionsDialog() {
   optionsDialog = Ti.UI.createOptionDialog({
     options: pickerData,
     buttonNames: ['Cancel'],
-    selectedIndex: selectedIndex
   });
+  if (selectedIndex) {
+  	optionsDialog.selectedIndex = selectedIndex;
+  }
   optionsDialog.show();
   optionsDialog.addEventListener('click', done);
 }
@@ -200,7 +202,6 @@ function getSelectedRowTitle(index) {
 */
 function getKeyIndexFromPairs(pairs, key) {
   pairs = pairs || [];
-  key = key || null;
   var rowIndex = null;
 
   // Determine index.
