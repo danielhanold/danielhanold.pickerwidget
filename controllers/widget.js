@@ -207,7 +207,11 @@ function getSelectedRowTitle(index) {
 */
 function getKeyIndexFromPairs(pairs, key) {
   pairs = pairs || [];
-  key = key || null;
+
+  if(typeof key === 'undefined') {
+    key = null;
+  }
+
   var rowIndex = null;
 
   // Determine index.
