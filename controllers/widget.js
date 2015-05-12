@@ -71,7 +71,8 @@ else {
 * Generate and populate the optionsDialog.
 */
 function populateOptionsDialog() {
-  var selectedIndex = undefined;
+  var selectedIndex;
+  var options;
 
   // Convert the object into array pairs.
   pickerValueArray = _.pairs(args.pickerValues[0]);
@@ -87,12 +88,18 @@ function populateOptionsDialog() {
     selectedIndex = getKeyIndexFromPairs(pickerValueArray, args.selectedValues[0]);
   }
 
-  // Create an options dialog.
-  optionsDialog = Ti.UI.createOptionDialog({
+  options = {
     options: pickerData,
-    buttonNames: ['Cancel'],
-    selectedIndex: selectedIndex
-  });
+    buttonNames: ['Cancel']
+  };
+
+
+  if(selectedIndex !== null) {
+    options.selectedIndex = selectedIndex;
+  }
+
+  // Create an options dialog.
+  optionsDialog = Ti.UI.createOptionDialog(options);
   optionsDialog.show();
   optionsDialog.addEventListener('click', done);
 }
