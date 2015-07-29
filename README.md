@@ -5,6 +5,7 @@ This is a widget for the [Alloy](http://projects.appcelerator.com/alloy/docs/All
 This widget attempts to normalize cross-platform differences and general idiosyncrasies with the Titanium SDK. Currently, the widget needs to be initiated in the controller. The widget provides iOS and Android support for three types of pickers:
 
 * Single-column picker
+* Multi-column picker
 * Date picker
 * Age Range picker
 
@@ -13,7 +14,7 @@ To open one of the pickers, specify the following variables:
 
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
-| type | `string` | Type of picker ('single-column', 'age-range', 'date-picker') |
+| type | `string` | Type of picker ('single-column', 'multi-column', 'age-range', 'date-picker') |
 | id | `string` | Identifier for the picker |
 | outerView | `object` | View this widget should get attached to. Usually, a window. |
 | hideNavBar | `boolean` | Hides the navigation bar on iOS. |
@@ -96,6 +97,27 @@ Alloy.createWidget('danielhanold.pickerWidget', {
   },
 });
 ```
+
+### Multi-Column Picker
+This example creates a multi-column picker, attaches it to a window, and populates it with some hair colors.
+
+```
+Alloy.createWidget('danielhanold.pickerWidget', {
+  id: 'myMultiColumn',
+  outerView: $.win,
+  hideNavBar: false,
+  type: 'multi-column',
+  selectedValues: [20, 30],
+  pickerValues: [
+	{10: 'Auburn', 20: 'Bald', 30: 'Black', 40: 'Blond', 50: 'Brown'},
+	{10: 'Auburn 2', 20: 'Bald 2', 30: 'Black 2', 40: 'Blond 2', 50: 'Brown 2'}
+  ],
+  onDone: function(e) {
+    // Do something
+  },
+});
+```
+
 ### Range Picker
 This example creates a range picker, attaches it to a window, sets the mininmum and maximum value, lower and higher values, and defines a minimum difference between the two values.
 

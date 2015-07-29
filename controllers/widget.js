@@ -90,9 +90,11 @@ function populateOptionsDialog() {
   // Create an options dialog.
   optionsDialog = Ti.UI.createOptionDialog({
     options: pickerData,
-    buttonNames: ['Cancel'],
-    selectedIndex: selectedIndex
+    buttonNames: [L('cancelButton', 'Cancel')]
   });
+  if (selectedIndex) {
+    optionsDialog.selectedIndex = selectedIndex;
+  }
   optionsDialog.show();
   optionsDialog.addEventListener('click', done);
 }
@@ -168,7 +170,54 @@ function populatePicker() {
       });
     }
     break;
+  
+  case 'multi-column':
+    
+    // Set defaults
+    args.pickerParams = args.pickerParams || {};
+	
+	pickerValueArray = [];
+	
+    // Create x number of picker columns.
+    var columnParams = {width: (OS_ANDROID) ? 100 : undefined};
+    
+    // Fill each column with the full age range.
+    _.each(args.pickerValues, function(column, index) { 	
+    	
+    	// Convert the object into array pairs.
+	    pickerValueArray[index] = _.pairs(column);
+		
+		// create a column
+		pickerData[index] = Ti.UI.createPickerColumn(columnParams);
+		
+	    // Iterate over all pairs and add the value
+	    _.each(pickerValueArray[index], function(pair){
+	      pickerData[index].addRow(Ti.UI.createPickerRow({
+	        title: pair[1]
+	      }));
+	    });
+    });
 
+    // Set columns data.
+    picker.setColumns(pickerData);
+
+    // On iOS, reload columns to ensure they show up correctly.
+    if (OS_IOS) {
+      _.each(pickerData, function(column) {
+        picker.reloadColumn(column);
+      });
+    }
+
+    // Set the defaults.
+    if (_.isArray(args.selectedValues) && !_.isEmpty(args.selectedValues)) {
+      _.each(args.selectedValues, function(value, columnIndex) {
+        var rowIndex = getKeyIndexFromPairs(pickerValueArray[columnIndex], Number(value));
+        picker.setSelectedRow(columnIndex, rowIndex, false);
+      });
+    }
+    
+    break;
+    
   case 'date-picker':
     // On Android, the picker type can't bet set after
     // the picker is created.
@@ -287,8 +336,8 @@ function done(e) {
     // Validation: Ensure high number is higher than low.
     if (numberLow >= numberHigh) {
       var alertDialog = Ti.UI.createAlertDialog({
-        title: "Error",
-        message: 'Please pick a valid age range',
+        title: L('ErrorHeader', 'Error'),
+        message: L('ErrorPickValidAgeRange', 'Please pick a valid age range'),
         buttonNames: ['Ok']
       }).show();
       return;
@@ -299,7 +348,7 @@ function done(e) {
     if (_.isNumber(args.pickerParams.minDifference)) {
       if ((numberHigh - numberLow) < Number(args.pickerParams.minDifference)) {
         var alertDialog = Ti.UI.createAlertDialog({
-          title: "Error",
+          title: L('ErrorHeader', 'Error'),
           message: 'Ages must be ' + String(args.pickerParams.minDifference) + ' years apart.',
           buttonNames: ['Ok']
         }).show();
@@ -311,9 +360,25 @@ function done(e) {
     data = {
       low: numberLow,
       high: numberHigh
-    }
+    };
     break;
-
+  
+  case 'multi-column':
+    
+    data = [];
+    
+    // push values for each column
+    _.each(args.pickerValues, function(column, index){
+      var value = getSelectedRowTitle(index);
+	  var key = getKeyFromPairs(pickerValueArray[index], value);
+		
+	  data.push({
+	    key: key,
+	    value: value
+	  });
+    });
+    break;
+  
   case 'date-picker':
     // Determine the selected date.
     var selectedDate = picker.getValue();
@@ -327,7 +392,7 @@ function done(e) {
         var message = 'The date you selected is not valid';
       }
       var alertDialog = Ti.UI.createAlertDialog({
-        title: "Error",
+        title: L('ErrorHeader', 'Error'),
         message: message,
         buttonNames: ['Ok']
       }).show();
@@ -343,7 +408,7 @@ function done(e) {
       age: age,
       unixMilliseconds: unixMilliseconds,
       unixSeconds: unixSeconds
-    }
+    };
     break;
   }
 
